@@ -18,7 +18,6 @@
             min-height: 100vh;
             text-align: center;
             overflow-x: hidden;
-            transition: background-color 0.5s ease;
         }
 
         .page {
@@ -28,75 +27,67 @@
             padding: 60px 20px;
             width: 100%;
             max-width: 450px;
-            animation: fadeIn 0.5s ease-out;
+            animation: fadeIn 0.4s ease-out;
         }
 
         .active { display: flex; }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         h1.aesthetic {
             font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 900;
-            letter-spacing: 1px;
             margin: 15px 0;
-            color: #E8DDDD;
             text-transform: uppercase;
         }
 
         img {
-            width: 300px;
+            width: 280px;
             border-radius: 20px;
             border: 3px solid #B99099;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
 
-        p { font-size: 1.2rem; line-height: 1.6; margin: 25px 0; text-transform: uppercase;}
+        p { font-size: 1.1rem; line-height: 1.6; margin: 20px 0; text-transform: uppercase; font-weight: 400;}
 
         button {
             background-color: #B99099;
             color: #762E3F;
             border: none;
-            padding: 18px 40px;
+            padding: 15px 35px;
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            border-radius: 15px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            transform-origin: center;
+            font-size: 1rem;
+            transition: transform 0.1s active;
         }
 
         #nopeBtn { background-color: #E8DDDD; margin-left: 10px; }
-        .btn-container { display: flex; justify-content: center; align-items: center; gap: 10px; min-height: 250px; }
+        .btn-container { display: flex; justify-content: center; align-items: center; gap: 10px; min-height: 250px; width: 100%;}
 
-        /* Confetti Styling */
         .confetti {
             position: fixed;
-            width: 10px;
-            height: 10px;
-            background-color: #f2d74e;
+            width: 8px;
+            height: 8px;
             top: -10px;
-            z-index: 999;
+            z-index: 1000;
             border-radius: 50%;
             animation: fall 3s linear forwards;
         }
 
         @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(720deg);
-                opacity: 0;
-            }
+            to { transform: translateY(105vh) rotate(360deg); opacity: 0; }
         }
 
         @keyframes shake {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(8px); }
-            75% { transform: translateX(-8px); }
-            100% { transform: translateX(0); }
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
         }
     </style>
 </head>
@@ -141,72 +132,38 @@
     let fScale = 1;
     let phraseIndex = 0;
 
-    const phrases = 
-        [Are you sure?🤨, 
-        don't be a hater 👺, 
-        Chat, is this the end? 🎥, 
-        I’m literally a 1/1 limited edition 💎, 
-        Aura check failed 📉,
-        Pweaseeee🎀,
-        I'm crashed out fr 🧨,
-        L + Ratio + No Motion 💀 ];
+    const phrases = [
+        "Are you sure?🤨", 
+        "don't be a hater 👺", 
+        "Chat, is this the end? 🎥", 
+        "I’m literally a 1/1 limited edition 💎", 
+        "Aura check failed 📉",
+        "Pweaseeee🎀",
+        "I'm crashed out fr 🧨",
+        "L + Ratio + No Motion 💀"
+    ];
 
     function nextPage(n) {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById('page' + n).classList.add('active');
-        window.scrollTo(0,0);}
+        console.log("Navigating to page " + n);
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(p => p.classList.remove('active'));
+        
+        const targetPage = document.getElementById('page' + n);
+        if (targetPage) {
+            targetPage.classList.add('active');
+            window.scrollTo(0,0);
+        }
+    }
 
     function shrinkNope() {
         const n = document.getElementById('nopeBtn');
         const f = document.getElementById('forgiveBtn');
         
-        nScale -= 0.1; 
+        nScale -= 0.12; 
         fScale += 0.15;
         
         n.style.transform = `scale(${nScale})`;
         f.style.transform = `scale(${fScale})`;
-
-        // Shake the body for drama
-        document.body.style.animation = "shake 0.1s 2";
-        setTimeout(() => document.body.style.animation = "", 100);
-
-        if (phraseIndex < phrases.length) {
-            f.innerHTML = phrases[phraseIndex];
-            phraseIndex++;
-        }
-
-        if (nScale <= 0.2) {
-            n.style.display = 'none';
-            f.innerHTML = "I ACCEPT YOUR APOLOGY"; 
-            f.style.backgroundColor = "#E8DDDD";
-            f.style.color = "#762E3F";
-            return;
-        }
-    }
-
-    function celebrate() {
-        // Trigger the confetti
-        for (let i = 0; i < 50; i++) {
-            createConfetti();
-        }
-        // Go to final page
-        setTimeout(() => nextPage(5), 300);
-    }
-
-    function createConfetti() {
-        const colors = ['#B99099', '#E8DDDD', '#762E3F', '#FFD700', '#FF69B4'];
-        const confetti = document.createElement('div');
-        confetti.classList.add('confetti');
-        confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.animationDuration = (Math.random() * 2 + 1) + 's';
-        document.body.appendChild(confetti);
-        
-        setTimeout(() => {
-            confetti.remove();
-        }, 3000);
-    }
-    </script>
-</body>
-</html>
-
+       <script>
+  <body>
+  <html>

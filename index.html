@@ -141,22 +141,20 @@
     let fScale = 1;
     let phraseIndex = 0;
 
-    const phrases = [
-        "Are you sure?🤨", 
-        "don't be a hater 👺", 
-        "Chat, is this the end? 🎥", 
-        "I’m literally a 1/1 limited edition 💎", 
-        "Aura check failed 📉",
-        "Pweaseeee🎀",
-        "I'm crashed out fr 🧨",
-        "L + Ratio + No Motion 💀"
-    ];
+    const phrases = 
+        [Are you sure?🤨, 
+        don't be a hater 👺, 
+        Chat, is this the end? 🎥, 
+        I’m literally a 1/1 limited edition 💎, 
+        Aura check failed 📉,
+        Pweaseeee🎀,
+        I'm crashed out fr 🧨,
+        L + Ratio + No Motion 💀 ];
 
     function nextPage(n) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById('page' + n).classList.add('active');
-        window.scrollTo(0,0);
-    }
+        window.scrollTo(0,0);}
 
     function shrinkNope() {
         const n = document.getElementById('nopeBtn');

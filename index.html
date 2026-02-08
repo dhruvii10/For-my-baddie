@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For My Baddie 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
+        /* iOS Emoji Styling */
+        @font-face {
+            font-family: "Apple Color Emoji";
+            src: local("Apple Color Emoji"), url("https://cdn.jsdelivr.net/gh/jdecked/twemoji-amazium@latest/dist/twemoji.woff2") format("woff2");
+        }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: #D56989; /* Pastel Pink */
-            color: #4a4a4a;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #762E3F; /* Your Dark Plum BG */
+            color: #E8DDDD; /* Light text to stand out */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -26,111 +31,117 @@
             flex-direction: column;
             align-items: center;
             padding: 20px;
-            animation: fadeIn 0.5s ease-in-out;
+            animation: fadeIn 0.8s ease-in-out;
         }
 
         .active { display: flex; }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
+        /* Heartwell Style Font */
         h1.aesthetic {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4rem;
-            margin-bottom: 10px;
-            color: #ff4d6d;
+            font-family: 'Pinyon Script', cursive;
+            font-size: 5rem;
+            margin-bottom: 20px;
+            color: #B99099; /* Your Button Color */
+            font-weight: normal;
         }
 
         img {
-            width: 200px;
-            border-radius: 20px;
+            max-width: 250px;
+            border-radius: 30px;
             margin-bottom: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border: 3px solid #B99099;
         }
 
+        /* Modernica Style Font */
         p {
-            font-size: 1.1rem;
-            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            line-height: 1.8;
             margin-bottom: 30px;
         }
 
         button {
-            background-color: #ff4d6d;
-            color: white;
+            background-color: #B99099; /* Your Pinkish Mauve */
+            color: #762E3F; /* Dark text for contrast */
             border: none;
-            padding: 15px 30px;
+            padding: 18px 35px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
             font-size: 1rem;
-            border-radius: 50px;
+            border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
         }
 
-        button:hover {
-            transform: scale(1.05);
-            background-color: #ff758f;
+        #nopeBtn {
+            background-color: #E8DDDD; /* Your Specific Grey/White */
+            color: #762E3F;
         }
 
         .btn-container {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
         }
 
-        #nopeBtn {
-            background-color: #999;
+        span.emoji {
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
         }
     </style>
 </head>
 <body>
 
     <div id="page1" class="page active">
-        <img src="https://cataas.com/cat/cute" alt="Cute Cat">
+        <img src="https://cataas.com/cat/says/hi?fontColor=white" alt="Cat Image">
         <h1 class="aesthetic">Hey baddie!!</h1>
         <p>Yes, it’s me.<br>
         Yes, I messed up.<br>
-        And yes… I made a whole website instead of sending a boring “sorry” 😭</p>
+        And yes… I made a whole website instead of sending a boring “sorry” <span class="emoji">😭</span></p>
         <button onclick="nextPage(2)">Proceed with caution →</button>
     </div>
 
     <div id="page2" class="page">
-        <p>🥹 I realized that I have hurt you.<br>
+        <img src="https://cataas.com/cat/sad" alt="Sad Cat">
+        <p><span class="emoji">🥹</span> I realized that I have hurt you.<br>
         It wasn’t my intention.<br>
-        Please forgive me, I am so sorry. 😔</p>
+        Please forgive me, I am so sorry. <span class="emoji">😔</span></p>
         <button onclick="nextPage(3)">Okayy....</button>
     </div>
 
     <div id="page3" class="page">
+        <img src="https://cataas.com/cat/funny" alt="Funny Cat">
         <p>I thought I was being funny.<br>
         Turns out<br>
-        I was being me. 🥲</p>
-        <button onclick="nextPage(4)">yeah, that’s you 🙂</button>
+        I was being me. <span class="emoji">🥲</span></p>
+        <button onclick="nextPage(4)">yeah, that’s you <span class="emoji">🙂</span></button>
     </div>
 
     <div id="page4" class="page">
         <p>I apologise for hurting uu<br>
-        Will you forgive me baddie jii 😭🥀</p>
+        Will you forgive me baddie jii <span class="emoji">😭🥀</span></p>
         <div class="btn-container">
-            <button id="forgiveBtn" onclick="nextPage(5)">forgiven 🙄</button>
+            <button id="forgiveBtn" onclick="nextPage(5)">forgiven <span class="emoji">🙄</span></button>
             <button id="nopeBtn" onclick="shrinkNope()">nope</button>
         </div>
     </div>
 
     <div id="page5" class="page">
-        <img src="https://cataas.com/cat/grin" alt="Grinning Cat">
-        <h1 class="aesthetic">HEHE 😆</h1>
-        <p>i can rest now 😂<br>
-        <strong>~ FROM UR SHAWRTYY 💋</strong></p>
+        <img src="https://cataas.com/cat/smug" alt="Happy Cat">
+        <h1 class="aesthetic">HEHE <span class="emoji">🥹</span></h1>
+        <p>i can rest now <span class="emoji">😂</span><br><br>
+        <strong>~ FROM UR SHAWRTYY <span class="emoji">💋</span></strong></p>
     </div>
 
     <script>
         let nopeScale = 1;
         let forgiveScale = 1;
-        const phrases = ["Are you sure?", "Please? 🥺", "I'll buy you snacks!", "Don't be like that...", "I ACCEPT YOUR APOLOGY"];
 
         function nextPage(pageNumber) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -153,11 +164,8 @@
 
             nopeBtn.style.transform = `scale(${nopeScale})`;
             forgiveBtn.style.transform = `scale(${forgiveScale})`;
-            
-            // Change text of forgive button randomly or sequentially
-            const randomPhrase = phrases[Math.floor(Math.random() * (phrases.length - 1))];
-            forgiveBtn.innerHTML = randomPhrase;
         }
     </script>
 </body>
 </html>
+

@@ -1,12 +1,11 @@
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For My Baddie 💖</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* iOS Emoji Styling */
         @font-face {
             font-family: "Apple Color Emoji";
             src: local("Apple Color Emoji"), url("https://cdn.jsdelivr.net/gh/jdecked/twemoji-amazium@latest/dist/twemoji.woff2") format("woff2");
@@ -16,13 +15,12 @@
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', sans-serif;
-            background-color: #762E3F; /* Your Dark Plum BG */
+            background-color: #762E3F; /* Dark Plum */
             color: #E8DDDD;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Changed to allow scrolling */
-            min-height: 100vh;
-            overflow-y: auto; /* Enable scrolling */
+            align-items: flex-start; /* Allows page to grow */
+            min-height: 100vh; 
             text-align: center;
         }
 
@@ -30,74 +28,63 @@
             display: none;
             flex-direction: column;
             align-items: center;
-            padding: 40px 20px; /* More space at top/bottom */
+            padding: 50px 20px; /* Extra padding so it's never "short" */
             width: 100%;
-            box-sizing: border-box;
-            animation: fadeIn 0.8s ease-in-out;
+            max-width: 500px;
+            animation: fadeIn 0.6s ease-out;
         }
 
         .active { display: flex; }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Fixed "Hey Baddie" and "HEHE" - Bold & Aesthetic */
+        /* Bold "Graphic" Style Font for Titles */
         h1.aesthetic {
-            font-family: 'Great Vibes', cursive;
-            font-size: 5.5rem; /* Large and bold impact */
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem; /* Large, bold, and clean */
             font-weight: 700;
-            margin: 10px 0;
-            color: #B99099; 
-            text-shadow: 3px 3px 0px rgba(0,0,0,0.2);
-            line-height: 1;
+            letter-spacing: 2px;
+            margin: 20px 0;
+            color: #E8DDDD; 
+            text-transform: uppercase;
         }
 
         img {
-            max-width: 90%;
-            width: 300px;
-            height: auto;
-            border-radius: 25px;
-            margin-bottom: 25px;
-            border: 4px solid #B99099;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            width: 100%;
+            max-width: 320px;
+            border-radius: 20px;
+            border: 3px solid #B99099;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
 
         p {
             font-size: 1.2rem;
+            line-height: 1.8;
+            margin: 30px 0;
             font-weight: 400;
-            line-height: 1.6;
-            margin-bottom: 35px;
-            max-width: 85%;
         }
 
         button {
             background-color: #B99099;
             color: #762E3F;
             border: none;
-            padding: 18px 40px;
+            padding: 20px 45px;
             font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 1.1rem;
             border-radius: 15px;
             cursor: pointer;
-            transition: 0.3s;
-            margin-bottom: 20px; /* Space so it's not at the very bottom */
+            transition: transform 0.2s;
         }
 
-        #nopeBtn {
-            background-color: #E8DDDD;
-            color: #762E3F;
-        }
+        button:active { transform: scale(0.95); }
 
-        .btn-container { 
-            display: flex; 
-            gap: 15px; 
-            flex-wrap: wrap; 
-            justify-content: center; 
-        }
+        #nopeBtn { background-color: #E8DDDD; color: #762E3F; }
 
+        .btn-container { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
         span.emoji { font-family: "Apple Color Emoji", sans-serif; }
     </style>
 </head>
@@ -105,7 +92,7 @@
 
     <div id="page1" class="page active">
         <img src="1000189713.jpg" alt="Smoking Cat">
-        <h1 class="aesthetic">Hey baddie!!</h1>
+        <h1 class="aesthetic">HEY BADDIE</h1>
         <p>Yes, it’s me.<br>
         Yes, I messed up.<br>
         And yes… I made a whole website instead of sending a boring “sorry” <span class="emoji">😭</span></p>
@@ -140,36 +127,33 @@
 
     <div id="page5" class="page">
         <img src="1000189715.jpg" alt="Smirk Cat">
-        <h1 class="aesthetic">HEHE <span class="emoji">🥹</span></h1>
+        <h1 class="aesthetic">HEHE</h1>
         <p>i can rest now <span class="emoji">😂</span><br><br>
         <strong>~ FROM UR SHAWRTYY <span class="emoji">💋</span></strong></p>
     </div>
 
     <script>
-        let nopeScale = 1;
-        let forgiveScale = 1;
-
+        let nScale = 1;
+        let fScale = 1;
         function nextPage(n) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById('page' + n).classList.add('active');
-            window.scrollTo(0, 0); // Reset scroll to top on new page
+            window.scrollTo(0,0);
         }
-
         function shrinkNope() {
             const n = document.getElementById('nopeBtn');
             const f = document.getElementById('forgiveBtn');
-            nopeScale -= 0.15;
-            forgiveScale += 0.2;
-            if (nopeScale <= 0.2) {
+            nScale -= 0.15;
+            fScale += 0.2;
+            if (nScale <= 0.2) {
                 n.style.display = 'none';
                 f.innerHTML = "I accept your apology";
-                f.style.transform = `scale(${forgiveScale})`;
+                f.style.transform = `scale(${fScale})`;
                 return;
             }
-            n.style.transform = `scale(${nopeScale})`;
-            f.style.transform = `scale(${forgiveScale})`;
+            n.style.transform = `scale(${nScale})`;
+            f.style.transform = `scale(${fScale})`;
         }
     </script>
 </body>
 </html>
-

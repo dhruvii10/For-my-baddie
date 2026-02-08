@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOR MY BADDIE 🎀</title>
+    <title>FOR MY BADDIE 💖</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -27,68 +27,50 @@
             padding: 60px 20px;
             width: 100%;
             max-width: 450px;
-            animation: fadeIn 0.4s ease-out;
+            animation: fadeIn 0.5s ease-out;
         }
 
         .active { display: flex; }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         h1.aesthetic {
             font-family: 'Cinzel', serif;
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 900;
+            letter-spacing: 1px;
             margin: 15px 0;
+            color: #E8DDDD;
             text-transform: uppercase;
         }
 
         img {
-            width: 280px;
+            width: 300px;
             border-radius: 20px;
             border: 3px solid #B99099;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        p { font-size: 1.1rem; line-height: 1.6; margin: 20px 0; text-transform: uppercase; font-weight: 400;}
+        p { font-size: 1.2rem; line-height: 1.6; margin: 25px 0; text-transform: uppercase;}
 
         button {
             background-color: #B99099;
             color: #762E3F;
             border: none;
-            padding: 15px 35px;
+            padding: 18px 40px;
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            border-radius: 12px;
+            border-radius: 15px;
             cursor: pointer;
-            font-size: 1rem;
-            transition: transform 0.1s active;
+            transition: transform 0.2s ease; /* Smooth growth */
+            transform-origin: center;
         }
 
         #nopeBtn { background-color: #E8DDDD; margin-left: 10px; }
-        .btn-container { display: flex; justify-content: center; align-items: center; gap: 10px; min-height: 250px; width: 100%;}
-
-        .confetti {
-            position: fixed;
-            width: 8px;
-            height: 8px;
-            top: -10px;
-            z-index: 1000;
-            border-radius: 50%;
-            animation: fall 3s linear forwards;
-        }
-
-        @keyframes fall {
-            to { transform: translateY(105vh) rotate(360deg); opacity: 0; }
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-8px); }
-            75% { transform: translateX(8px); }
-        }
+        .btn-container { display: flex; justify-content: center; align-items: center; gap: 10px; min-height: 200px; }
     </style>
 </head>
 <body>
@@ -96,19 +78,19 @@
     <div id="page1" class="page active">
         <img src="1000189713.jpg">
         <h1 class="aesthetic">HEY BADDIE</h1>
-        <p>YES, IT’S ME<br>YUP, I MESSED UP<br>I MADE A WHOLE WEBSITE INSTEAD OF A BORING "SORRY" 😭</p>
+        <p>YUP, I MESSED UP.<br>I MADE A WHOLE WEBSITE INSTEAD OF A BORING "SORRY" 😭</p>
         <button onclick="nextPage(2)">NEXT →</button>
     </div>
 
     <div id="page2" class="page">
         <img src="1000189716.jpg">
-        <p>🥲 I REALIZED THAT I HAVE HURT YOU<br>IT WASN’T MY INTENTION<br>PLEASE FORGIVE ME 😔</p>
+        <p>I REALIZED THAT I HAVE HURT YOU.<br>PLEASE FORGIVE ME. 😔</p>
         <button onclick="nextPage(3)">OKAYY...</button>
     </div>
 
     <div id="page3" class="page">
         <img src="1000189717.jpg">
-        <p>I THOUGHT I WAS BEING FUNNY.<br>TURNS OUT<br>I WAS JUST BEING ME 🥲</p>
+        <p>I THOUGHT I WAS BEING FUNNY.<br>TURNS OUT I WAS JUST BEING ME. 🥲</p>
         <button onclick="nextPage(4)">YEAH, THAT'S YOU 🙂</button>
     </div>
 
@@ -116,7 +98,7 @@
         <img src="1000189712.jpg">
         <p>WILL YOU FORGIVE ME BADDIE JII? 🥀</p>
         <div class="btn-container">
-            <button id="forgiveBtn" onclick="celebrate()">Forgiven 🙄</button>
+            <button id="forgiveBtn" onclick="nextPage(5)">Forgiven 🙄</button>
             <button id="nopeBtn" onclick="shrinkNope()">Nope</button>
         </div>
     </div>
@@ -124,7 +106,7 @@
     <div id="page5" class="page">
         <img src="1000189715.jpg">
         <h1 class="aesthetic">HEHE</h1>
-        <p>THANKS FOR FORGIVING ME 💃<br><strong>+1,000,000 AURA RECEIVED ✅</strong><br><br><strong>~ FROM UR SHAWRTYY 💅💋</strong></p>
+        <p>THANKS FOR FORGIVING ME 💃<br><br><strong>~ FROM UR SHAWRTYY 💅💋</strong></p>
     </div>
 
     <script>
@@ -135,24 +117,15 @@
     const phrases = [
         "Are you sure?🤨", 
         "don't be a hater 👺", 
-        "Chat, is this the end? 🎥", 
-        "I’m literally a 1/1 limited edition 💎", 
-        "Aura check failed 📉",
-        "Pweaseeee🎀",
-        "I'm crashed out fr 🧨",
-        "L + Ratio + No Motion 💀"
+        "I’m 1/1 limited edition 💎", 
+        "Aura check failed 📉", 
+        "Pweaseeee🎀"
     ];
 
     function nextPage(n) {
-        console.log("Navigating to page " + n);
-        const pages = document.querySelectorAll('.page');
-        pages.forEach(p => p.classList.remove('active'));
-        
-        const targetPage = document.getElementById('page' + n);
-        if (targetPage) {
-            targetPage.classList.add('active');
-            window.scrollTo(0,0);
-        }
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById('page' + n).classList.add('active');
+        window.scrollTo(0,0);
     }
 
     function shrinkNope() {
@@ -164,6 +137,18 @@
         
         n.style.transform = `scale(${nScale})`;
         f.style.transform = `scale(${fScale})`;
-       <script>
-  <body>
-  <html>
+
+        if (phraseIndex < phrases.length) {
+            f.innerHTML = phrases[phraseIndex];
+            phraseIndex++;
+        }
+
+        if (nScale <= 0.2) {
+            n.style.display = 'none';
+            f.innerHTML = "I ACCEPT YOUR APOLOGY"; 
+            return;
+        }
+    }
+    </script>
+</body>
+</html>

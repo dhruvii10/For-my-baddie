@@ -18,6 +18,7 @@
             min-height: 100vh;
             text-align: center;
             overflow-x: hidden;
+            transition: background-color 0.5s ease;
         }
 
         .page {
@@ -65,12 +66,38 @@
             font-weight: 700;
             border-radius: 15px;
             cursor: pointer;
-            transition: transform 0.2s ease; /* Smooth growth */
+            transition: all 0.2s ease;
             transform-origin: center;
         }
 
         #nopeBtn { background-color: #E8DDDD; margin-left: 10px; }
-        .btn-container { display: flex; justify-content: center; align-items: center; gap: 10px; min-height: 200px; }
+        .btn-container { display: flex; justify-content: center; align-items: center; gap: 10px; min-height: 250px; }
+
+        /* Confetti Styling */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f2d74e;
+            top: -10px;
+            z-index: 999;
+            border-radius: 50%;
+            animation: fall 3s linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(8px); }
+            75% { transform: translateX(-8px); }
+            100% { transform: translateX(0); }
+        }
     </style>
 </head>
 <body>
@@ -98,7 +125,7 @@
         <img src="1000189712.jpg">
         <p>WILL YOU FORGIVE ME BADDIE JII? 🥀</p>
         <div class="btn-container">
-            <button id="forgiveBtn" onclick="nextPage(5)">Forgiven 🙄</button>
+            <button id="forgiveBtn" onclick="celebrate()">Forgiven 🙄</button>
             <button id="nopeBtn" onclick="shrinkNope()">Nope</button>
         </div>
     </div>
@@ -106,7 +133,7 @@
     <div id="page5" class="page">
         <img src="1000189715.jpg">
         <h1 class="aesthetic">HEHE</h1>
-        <p>THANKS FOR FORGIVING ME 💃<br><br><strong>~ FROM UR SHAWRTYY 💅💋</strong></p>
+        <p>THANKS FOR FORGIVING ME 💃<br><strong>+1,000,000 AURA RECEIVED ✅</strong><br><br><strong>~ FROM UR SHAWRTYY 💅💋</strong></p>
     </div>
 
     <script>
@@ -119,8 +146,10 @@
         "don't be a hater 👺", 
         "Chat, is this the end? 🎥", 
         "I’m literally a 1/1 limited edition 💎", 
-        "Aura check failed 📉"
-        "Pweaseeee🎀"
+        "Aura check failed 📉",
+        "Pweaseeee🎀",
+        "I'm crashed out fr 🧨",
+        "L + Ratio + No Motion 💀"
     ];
 
     function nextPage(n) {
@@ -133,11 +162,15 @@
         const n = document.getElementById('nopeBtn');
         const f = document.getElementById('forgiveBtn');
         
-        nScale -= 0.12; 
+        nScale -= 0.1; 
         fScale += 0.15;
         
         n.style.transform = `scale(${nScale})`;
         f.style.transform = `scale(${fScale})`;
+
+        // Shake the body for drama
+        document.body.style.animation = "shake 0.1s 2";
+        setTimeout(() => document.body.style.animation = "", 100);
 
         if (phraseIndex < phrases.length) {
             f.innerHTML = phrases[phraseIndex];
@@ -147,9 +180,35 @@
         if (nScale <= 0.2) {
             n.style.display = 'none';
             f.innerHTML = "I ACCEPT YOUR APOLOGY"; 
+            f.style.backgroundColor = "#E8DDDD";
+            f.style.color = "#762E3F";
             return;
         }
+    }
+
+    function celebrate() {
+        // Trigger the confetti
+        for (let i = 0; i < 50; i++) {
+            createConfetti();
+        }
+        // Go to final page
+        setTimeout(() => nextPage(5), 300);
+    }
+
+    function createConfetti() {
+        const colors = ['#B99099', '#E8DDDD', '#762E3F', '#FFD700', '#FF69B4'];
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDuration = (Math.random() * 2 + 1) + 's';
+        document.body.appendChild(confetti);
+        
+        setTimeout(() => {
+            confetti.remove();
+        }, 3000);
     }
     </script>
 </body>
 </html>
+

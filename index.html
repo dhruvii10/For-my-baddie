@@ -132,28 +132,52 @@
         <strong>~ FROM UR SHAWRTYY <span class="emoji">💋</span></strong></p>
     </div>
 
-    <script>
-        let nScale = 1;
-        let fScale = 1;
-        function nextPage(n) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById('page' + n).classList.add('active');
-            window.scrollTo(0,0);
+<script>
+    let nScale = 1;
+    let fScale = 1;
+    let phraseIndex = 0;
+
+    // 1. CHANGE YOUR PHRASES HERE:
+    // You can add as many as you want in quotes, separated by commas.
+    const phrases = [
+        "Are you sure?", 
+        "Please? 🥺", 
+        "I'll buy you snacks!", 
+        "Don't be like that...", 
+        "Last chance!"
+    ];
+
+    function nextPage(n) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById('page' + n).classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    function shrinkNope() {
+        const n = document.getElementById('nopeBtn');
+        const f = document.getElementById('forgiveBtn');
+        
+        nScale -= 0.15; // Makes the "Nope" button smaller
+        fScale += 0.2;  // Makes the "Forgiven" button bigger
+        
+        // 2. THIS UPDATES THE BUTTON TEXT:
+        if (phraseIndex < phrases.length) {
+            n.innerHTML = phrases[phraseIndex];
+            phraseIndex++;
         }
-        function shrinkNope() {
-            const n = document.getElementById('nopeBtn');
-            const f = document.getElementById('forgiveBtn');
-            nScale -= 0.15;
-            fScale += 0.2;
-            if (nScale <= 0.2) {
-                n.style.display = 'none';
-                f.innerHTML = "I accept your apology";
-                f.style.transform = `scale(${fScale})`;
-                return;
-            }
-            n.style.transform = `scale(${nScale})`;
+
+        if (nScale <= 0.2) {
+            n.style.display = 'none';
+            // 3. CHANGE THE FINAL BUTTON TEXT HERE:
+            f.innerHTML = "I ACCEPT YOUR APOLOGY"; 
             f.style.transform = `scale(${fScale})`;
+            return;
         }
-    </script>
+        
+        n.style.transform = `scale(${nScale})`;
+        f.style.transform = `scale(${fScale})`;
+    }
+</script>
+
 </body>
 </html>

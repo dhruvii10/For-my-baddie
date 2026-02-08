@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For My Baddie 💖</title>
-    <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&family=Montserrat:wght@300;400;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* iOS Emoji Styling */
         @font-face {
@@ -16,8 +16,8 @@
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', sans-serif;
-            background-color: #762E3F; /* Your Dark Plum BG */
-            color: #E8DDDD; /* Light text to stand out */
+            background-color: #762E3F; /* YOUR DARK PLUM COLOR */
+            color: #E8DDDD; /* Light text */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -37,69 +37,64 @@
         .active { display: flex; }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
-        /* Heartwell Style Font */
+        /* Heartwell Style Font for Baddie & HEHE */
         h1.aesthetic {
-            font-family: 'Pinyon Script', cursive;
+            font-family: 'Monsieur La Doulaise', cursive;
             font-size: 5rem;
-            margin-bottom: 20px;
-            color: #B99099; /* Your Button Color */
-            font-weight: normal;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #B99099; /* Your button color */
+            font-weight: 400;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
         }
 
         img {
             max-width: 250px;
-            border-radius: 30px;
+            max-height: 280px;
+            border-radius: 20px;
             margin-bottom: 20px;
             border: 3px solid #B99099;
+            object-fit: cover;
         }
 
-        /* Modernica Style Font */
         p {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-            line-height: 1.8;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            line-height: 1.6;
             margin-bottom: 30px;
         }
 
         button {
-            background-color: #B99099; /* Your Pinkish Mauve */
-            color: #762E3F; /* Dark text for contrast */
+            background-color: #B99099; /* YOUR BUTTON COLOR */
+            color: #762E3F;
             border: none;
-            padding: 18px 35px;
+            padding: 15px 30px;
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
-            font-size: 1rem;
             border-radius: 12px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
 
         #nopeBtn {
-            background-color: #E8DDDD; /* Your Specific Grey/White */
+            background-color: #E8DDDD; /* Nope button color */
             color: #762E3F;
         }
 
-        .btn-container {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            justify-content: center;
-        }
+        .btn-container { display: flex; gap: 15px; }
 
-        span.emoji {
-            font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
-        }
+        span.emoji { font-family: "Apple Color Emoji", sans-serif; }
     </style>
 </head>
 <body>
 
     <div id="page1" class="page active">
-        <img src="YOUR_IMAGE_NAME_1.jpg" alt="Hey Baddie">
+        <img src="pic1.jpg" alt="Baddie Pic">
         <h1 class="aesthetic">Hey baddie!!</h1>
         <p>Yes, it’s me.<br>
         Yes, I messed up.<br>
@@ -108,7 +103,7 @@
     </div>
 
     <div id="page2" class="page">
-        <img src="YOUR_IMAGE_NAME_2.jpg" alt="I'm sorry">
+        <img src="pic2.jpg" alt="Sad Pic">
         <p><span class="emoji">🥹</span> I realized that I have hurt you.<br>
         It wasn’t my intention.<br>
         Please forgive me, I am so sorry. <span class="emoji">😔</span></p>
@@ -116,7 +111,7 @@
     </div>
 
     <div id="page3" class="page">
-        <img src="YOUR_IMAGE_NAME_3.jpg" alt="Funny me">
+        <img src="pic3.jpg" alt="Funny Pic">
         <p>I thought I was being funny.<br>
         Turns out<br>
         I was being me. <span class="emoji">🥲</span></p>
@@ -124,7 +119,7 @@
     </div>
 
     <div id="page4" class="page">
-        <img src="YOUR_IMAGE_NAME_4.jpg" alt="flower cat">
+        <img src="pic4.jpg" alt="Apology Pic">
         <p>I apologise for hurting uu<br>
         Will you forgive me baddie jii <span class="emoji">😭🥀</span></p>
         <div class="btn-container">
@@ -134,7 +129,7 @@
     </div>
 
     <div id="page5" class="page">
-        <img src="YOUR_IMAGE_NAME_5.jpg" alt="happy cat">
+        <img src="pic5.jpg" alt="End Pic">
         <h1 class="aesthetic">HEHE <span class="emoji">🥹</span></h1>
         <p>i can rest now <span class="emoji">😂</span><br><br>
         <strong>~ FROM UR SHAWRTYY <span class="emoji">💋</span></strong></p>
@@ -144,29 +139,25 @@
         let nopeScale = 1;
         let forgiveScale = 1;
 
-        function nextPage(pageNumber) {
+        function nextPage(n) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById('page' + pageNumber).classList.add('active');
+            document.getElementById('page' + n).classList.add('active');
         }
 
         function shrinkNope() {
-            const nopeBtn = document.getElementById('nopeBtn');
-            const forgiveBtn = document.getElementById('forgiveBtn');
-            
+            const n = document.getElementById('nopeBtn');
+            const f = document.getElementById('forgiveBtn');
             nopeScale -= 0.15;
             forgiveScale += 0.2;
-            
             if (nopeScale <= 0.2) {
-                nopeBtn.style.display = 'none';
-                forgiveBtn.innerHTML = "I accept your apology";
-                forgiveBtn.style.transform = `scale(${forgiveScale})`;
+                n.style.display = 'none';
+                f.innerHTML = "I accept your apology";
+                f.style.transform = `scale(${forgiveScale})`;
                 return;
             }
-
-            nopeBtn.style.transform = `scale(${nopeScale})`;
-            forgiveBtn.style.transform = `scale(${forgiveScale})`;
+            n.style.transform = `scale(${nopeScale})`;
+            f.style.transform = `scale(${forgiveScale})`;
         }
     </script>
 </body>
 </html>
-

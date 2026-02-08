@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOR MY BADDIE 💖</title>
+    <title>FOR MY BADDIE 🎀</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', sans-serif;
-            background-color: #762E3F; /* Dark Plum */
+            background-color: #762E3F;
             color: #E8DDDD;
             display: flex;
             justify-content: center;
@@ -37,11 +37,10 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* This is the Bold 'Graphic' Font style */
         h1.aesthetic {
             font-family: 'Cinzel', serif;
             font-size: 3.5rem;
-            font-weight: 900; /* Extra Bold */
+            font-weight: 900;
             letter-spacing: 1px;
             margin: 15px 0;
             color: #E8DDDD;
@@ -55,7 +54,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        p { font-size: 1.2rem; line-height: 1.6; margin: 25px 0; }
+        p { font-size: 1.2rem; line-height: 1.6; margin: 25px 0; text-transform: uppercase;}
 
         button {
             background-color: #B99099;
@@ -66,10 +65,12 @@
             font-weight: 700;
             border-radius: 15px;
             cursor: pointer;
+            transition: transform 0.2s ease; /* Smooth growth */
+            transform-origin: center;
         }
 
         #nopeBtn { background-color: #E8DDDD; margin-left: 10px; }
-        .btn-container { display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .btn-container { display: flex; justify-content: center; align-items: center; gap: 10px; min-height: 200px; }
     </style>
 </head>
 <body>
@@ -83,7 +84,7 @@
 
     <div id="page2" class="page">
         <img src="1000189716.jpg">
-        <p>I REALIZED THAT I HAVE HURT YOU.<br>PLEASE FORGIVE ME. 😔</p>
+        <p>🥲 I REALIZED THAT I HAVE HURT YOU.<br>PLEASE FORGIVE ME. 😔</p>
         <button onclick="nextPage(3)">OKAYY...</button>
     </div>
 
@@ -113,7 +114,6 @@
     let fScale = 1;
     let phraseIndex = 0;
 
-    // These phrases will now appear on the FORGIVEN button
     const phrases = [
         "Are you sure?", 
         "Please? 🥺", 
@@ -129,33 +129,26 @@
     }
 
     function shrinkNope() {
-        const n = document.getElementById('nopeBtn'); // The "Nope" button
-        const f = document.getElementById('forgiveBtn'); // The "Forgiven" button
+        const n = document.getElementById('nopeBtn');
+        const f = document.getElementById('forgiveBtn');
         
-        // 1. Shrink the Nope, Grow the Forgiven
         nScale -= 0.12; 
         fScale += 0.15;
         
-        // 2. The "Nope" button STAYS saying "nope"
-        n.innerHTML = "nope";
+        n.style.transform = `scale(${nScale})`;
+        f.style.transform = `scale(${fScale})`;
 
-        // 3. The "Forgiven" button changes text to beg!
         if (phraseIndex < phrases.length) {
             f.innerHTML = phrases[phraseIndex];
             phraseIndex++;
         }
 
-        // 4. When "Nope" gets too small to see
         if (nScale <= 0.2) {
             n.style.display = 'none';
-            f.innerHTML = "I ACCEPT YOUR APOLOGY"; // Final big text
-            f.style.transform = `scale(${fScale})`;
+            f.innerHTML = "I ACCEPT YOUR APOLOGY"; 
             return;
         }
-        
-        n.style.transform = `scale(${nScale})`;
-        f.style.transform = `scale(${fScale})`;
     }
-      </script>
+    </script>
 </body>
 </html>

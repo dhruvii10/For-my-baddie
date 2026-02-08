@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Baddie 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffd1dc; /* Pastel Pink */
+            color: #4a4a4a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .page {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .active { display: flex; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1.aesthetic {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            margin-bottom: 10px;
+            color: #ff4d6d;
+        }
+
+        img {
+            width: 200px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        button {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background-color: #ff758f;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        #nopeBtn {
+            background-color: #999;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="page1" class="page active">
+        <img src="https://cataas.com/cat/cute" alt="Cute Cat">
+        <h1 class="aesthetic">Hey baddie!!</h1>
+        <p>Yes, it’s me.<br>
+        Yes, I messed up.<br>
+        And yes… I made a whole website instead of sending a boring “sorry” 😭</p>
+        <button onclick="nextPage(2)">Proceed with caution →</button>
+    </div>
+
+    <div id="page2" class="page">
+        <p>🥹 I realized that I have hurt you.<br>
+        It wasn’t my intention.<br>
+        Please forgive me, I am so sorry. 😔</p>
+        <button onclick="nextPage(3)">Okayy....</button>
+    </div>
+
+    <div id="page3" class="page">
+        <p>I thought I was being funny.<br>
+        Turns out<br>
+        I was being me. 🥲</p>
+        <button onclick="nextPage(4)">yeah, that’s you 🙂</button>
+    </div>
+
+    <div id="page4" class="page">
+        <p>I apologise for hurting uu<br>
+        Will you forgive me baddie jii 😭🥀</p>
+        <div class="btn-container">
+            <button id="forgiveBtn" onclick="nextPage(5)">forgiven 🙄</button>
+            <button id="nopeBtn" onclick="shrinkNope()">nope</button>
+        </div>
+    </div>
+
+    <div id="page5" class="page">
+        <img src="https://cataas.com/cat/grin" alt="Grinning Cat">
+        <h1 class="aesthetic">HEHE 🥹</h1>
+        <p>i can rest now 😂<br>
+        <strong>~ FROM UR SHAWRTYY 💋</strong></p>
+    </div>
+
+    <script>
+        let nopeScale = 1;
+        let forgiveScale = 1;
+        const phrases = ["Are you sure?", "Please? 🥺", "I'll buy you snacks!", "Don't be like that...", "I ACCEPT YOUR APOLOGY"];
+
+        function nextPage(pageNumber) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page' + pageNumber).classList.add('active');
+        }
+
+        function shrinkNope() {
+            const nopeBtn = document.getElementById('nopeBtn');
+            const forgiveBtn = document.getElementById('forgiveBtn');
+            
+            nopeScale -= 0.15;
+            forgiveScale += 0.2;
+            
+            if (nopeScale <= 0.2) {
+                nopeBtn.style.display = 'none';
+                forgiveBtn.innerHTML = "I accept your apology";
+                forgiveBtn.style.transform = `scale(${forgiveScale})`;
+                return;
+            }
+
+            nopeBtn.style.transform = `scale(${nopeScale})`;
+            forgiveBtn.style.transform = `scale(${forgiveScale})`;
+            
+            // Change text of forgive button randomly or sequentially
+            const randomPhrase = phrases[Math.floor(Math.random() * (phrases.length - 1))];
+            forgiveBtn.innerHTML = randomPhrase;
+        }
+    </script>
+</body>
+</html>

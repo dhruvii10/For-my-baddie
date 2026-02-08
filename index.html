@@ -109,35 +109,53 @@
     </div>
 
     <script>
-        let nScale = 1;
-        let fScale = 1;
-        let phraseIndex = 0;
-        const phrases = ["Are you sure? 🤨", "Please? 🥺", "Snacks on me? 😋", "Don't be mean! 🤧", "Last chance! ✨️"];
+    let nScale = 1;
+    let fScale = 1;
+    let phraseIndex = 0;
 
-        function nextPage(n) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById('page' + n).classList.add('active');
-            window.scrollTo(0,0);
+    // These phrases will now appear on the FORGIVEN button
+    const phrases = [
+        "Are you sure?", 
+        "Please? 🥺", 
+        "I'll buy you snacks!", 
+        "Don't be like that...", 
+        "Pweaseeee"
+    ];
+
+    function nextPage(n) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById('page' + n).classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    function shrinkNope() {
+        const n = document.getElementById('nopeBtn'); // The "Nope" button
+        const f = document.getElementById('forgiveBtn'); // The "Forgiven" button
+        
+        // 1. Shrink the Nope, Grow the Forgiven
+        nScale -= 0.12; 
+        fScale += 0.15;
+        
+        // 2. The "Nope" button STAYS saying "nope"
+        n.innerHTML = "nope";
+
+        // 3. The "Forgiven" button changes text to beg!
+        if (phraseIndex < phrases.length) {
+            f.innerHTML = phrases[phraseIndex];
+            phraseIndex++;
         }
 
-        function shrinkNope() {
-            const n = document.getElementById('nopeBtn');
-            const f = document.getElementById('forgiveBtn');
-            nScale -= 0.15;
-            fScale += 0.2;
-            if (phraseIndex < phrases.length) {
-                n.innerHTML = phrases[phraseIndex];
-                phraseIndex++;
-            }
-            if (nScale <= 0.2) {
-                n.style.display = 'none';
-                f.innerHTML = "I ACCEPT YOUR APOLOGY";
-                f.style.transform = `scale(${fScale})`;
-                return;
-            }
-            n.style.transform = `scale(${nScale})`;
+        // 4. When "Nope" gets too small to see
+        if (nScale <= 0.2) {
+            n.style.display = 'none';
+            f.innerHTML = "I ACCEPT YOUR APOLOGY"; // Final big text
             f.style.transform = `scale(${fScale})`;
+            return;
         }
-    </script>
+        
+        n.style.transform = `scale(${nScale})`;
+        f.style.transform = `scale(${fScale})`;
+    }
+      </script>
 </body>
 </html>
